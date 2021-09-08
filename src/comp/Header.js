@@ -1,16 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { FaPlusCircle } from 'react-icons/fa';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Modal } from 'react-bootstrap';
 
 
 
 
 function Header({ addANoteFunc, formTitle, setFormTitle, formText, setFormText }) {
-
+   
 
     return (
         <div style={{ marginBottom: "50px", borderBottom: "2px solid black", paddingBottom: "20px", backgroundColor: "silver" }} >
             <h1>Add a Note</h1>
+
+           
+
             <Form onSubmit={addANoteFunc} >
                 <Form.Group className="m-3" controlId="formGroupEmail">
                     <Form.Label>Title</Form.Label>

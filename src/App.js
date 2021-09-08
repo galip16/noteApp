@@ -3,7 +3,7 @@ import './App.css';
 import React, { useState, useEffect } from "react"
 import Header from "./comp/Header"
 import NoteCard from './comp/NoteCard';
-import firebase from "./util/firebase.js";
+import { firebase } from "./util/firebase.js";
 
 function App() {
 
@@ -17,7 +17,7 @@ function App() {
 
   //
 
-  const [allNotes, setAllNotes] = useState()
+  const [allNotes, setAllNotes] = useState(null)
 
 
   useEffect(() => {
@@ -26,34 +26,19 @@ function App() {
 
     NotesRef.on("value", (snapshot) => {
 
-
       const allOrders = snapshot.val();
-      console.log(allOrders);
 
       const allNotes = []
 
-      for (let i in allOrders) {
-        allNotes.push({ i, ...allOrders[i] });
-
-
+      for (let id in allOrders) {
+        allNotes.push({ id, ...allOrders[id] });
       }
 
-
-      setAllNotes(allNotes)
-
-
-
-
-
-
-
-
+      setAllNotes(allNotes.reverse())
 
     })
 
   }, [])
-
-
 
 
 
@@ -63,7 +48,6 @@ function App() {
 
     const notRef = firebase.database().ref("Notes");
 
-
     const orderInfo = {
       formTitle,
       formText,
@@ -71,6 +55,9 @@ function App() {
     };
 
     notRef.push(orderInfo);
+
+    setFormTitle("");
+    setFormText("")
 
 
 
