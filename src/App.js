@@ -34,7 +34,7 @@ function App() {
         allNotes.push({ id, ...allOrders[id] });
       }
 
-      setAllNotes(allNotes.reverse())
+      setAllNotes(allNotes.sort(function (a, b) { return b.isComplete - a.isComplete }).reverse())
 
     })
 
