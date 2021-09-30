@@ -4,6 +4,7 @@ import { firebase } from "../util/firebase.js";
 
 
 
+
 function NoteCard({ allNotes }) {
 
     //Delete Function
@@ -40,10 +41,18 @@ function NoteCard({ allNotes }) {
             formTitle: updateTitle,
             formText: updateText
         });
+
         setShow(false);
 
+    }
 
 
+    const doneFunc = (id, isComplete) => {
+
+        const noteRef = firebase.database().ref("Notes").child(id);
+        noteRef.update({
+            isComplete: !isComplete   //bir hata var ama ne????
+        });
 
 
 
@@ -57,7 +66,7 @@ function NoteCard({ allNotes }) {
 
                 <Row xs={1} md={2} lg={4} className="g-4 m-3">
 
-                    {allNotes ? allNotes.map(({ id, formTitle, formText }, index) => {
+                    {allNotes ? allNotes.map(({ id, formTitle, formText, isComplete }, index) => {
 
                         return <div key={id} >
 
@@ -89,15 +98,16 @@ function NoteCard({ allNotes }) {
 
 
                             <Col>
-                                <Card style={{ backgroundColor: "white", boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }} >
+                                <Card className={"cardStyle"} >
 
                                     <Card.Body>
-                                        <Card.Title>{formTitle} </Card.Title>
-                                        <Card.Text>
+                                        <Card.Title className={isComplete ? "complete" : ""} >{formTitle} </Card.Title>
+                                        <Card.Text className={isComplete ? "complete" : ""} >
                                             {formText}
                                         </Card.Text>
                                         <Button variant="danger" onClick={() => deleteNoteFunc(id)} >Delete</Button>
                                         <Button variant="primary" onClick={() => editFunc(formTitle, formText, id)} >Edit</Button>
+                                        <Button variant="success" onClick={() => doneFunc(id, isComplete)} > {isComplete ? "Undone" : "Done"} </Button>
                                     </Card.Body>
                                 </Card>
                             </Col></div>
