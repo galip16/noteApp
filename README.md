@@ -28,5 +28,6 @@ Eine App, mit der Sie folgen und notieren können, was Sie tun müssen.
 <br/>
 <br/>
 
+![Note](https://user-images.githubusercontent.com/74236869/143565029-a2df2c2d-2a2b-4c1c-b71d-e946216698be.png)
 
-![Note](https://user-images.githubusercontent.com/74236869/143564864-800f909f-2b81-4cd1-b212-b93e97adb900.png)
+
