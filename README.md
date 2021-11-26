@@ -29,4 +29,4 @@ Eine App, mit der Sie folgen und notieren können, was Sie tun müssen.
 <br/>
 
 
-![noteApp](https://user-images.githubusercontent.com/74236869/133908898-367d6ae5-9ad1-4a18-adc5-0f3dcfc3131d.png)
+![Note](https://user-images.githubusercontent.com/74236869/143564864-800f909f-2b81-4cd1-b212-b93e97adb900.png)
